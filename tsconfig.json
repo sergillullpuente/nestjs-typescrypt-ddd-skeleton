@@ -20,7 +20,10 @@
 		"noImplicitAny": true,
 		"strictBindCallApply": true,
 		"forceConsistentCasingInFileNames": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"paths": {
+			"@commons": ["libs/commons/src/index.ts"]
+		}
 	},
 	"exclude": [
 		"node_modules",
