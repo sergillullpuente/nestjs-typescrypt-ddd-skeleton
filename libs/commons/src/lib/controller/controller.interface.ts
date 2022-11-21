@@ -1,3 +1,3 @@
 export interface ControllerInterface<T> {
-    run(): Promise<T>;
+    run(a: any): Promise<T>;
 }
