@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  postgres:
+    build: ./docker/postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=unibo
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=users
+    ports:
+      - "5432:5432"
+    volumes:
+      - psql-db-data:/var/lib/postgresql/data
+    networks:
+      - ws-network
+
+volumes:
+  psql-db-data:
+
+networks:
+  ws-network:
