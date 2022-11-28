@@ -3,6 +3,7 @@ import AddressCountry from "./value-objects/address-country.vo";
 import AddressPostalCode from "./value-objects/address-postal-code.vo";
 import AddressLine from "./value-objects/address-line.vo";
 import AddressId from "./value-objects/address-id.vo";
+import {ToPrimitives} from "../../commons/src";
 
 export default class Address {
     constructor(
@@ -49,7 +50,7 @@ export default class Address {
         );
     }
 
-    toPrimitives() {
+    toPrimitives(): ToPrimitives<Address> {
         return {
             id: this.id.value(),
             addressLine: this.addressLine.value(),

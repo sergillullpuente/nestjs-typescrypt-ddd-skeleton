@@ -3,6 +3,7 @@ import UserId from "./value-objects/user-id.vo";
 import UserName from "./value-objects/user-name.vo";
 import UserAlias from "./value-objects/user-alias.vo";
 import Address from "../../address/domain/address";
+import {ToPrimitives} from "../../commons/src";
 
 export default class User {
     constructor(
@@ -53,7 +54,7 @@ export default class User {
         return `${this._firstName} ${this._lastName}`;
     }
 
-    toPrimitives() {
+    toPrimitives(): ToPrimitives<User> {
         return {
             id: this.id.value(),
             email: this.email.value(),
