@@ -1,4 +1,4 @@
-import { InvalidArgumentError, StringValueObject } from "@commons";
+import {InvalidArgumentError, StringValueObject} from "../../../commons/src";
 
 export default class AddressCountry extends StringValueObject {
     private static readonly ISO_3166_1_LENGTH = 2;

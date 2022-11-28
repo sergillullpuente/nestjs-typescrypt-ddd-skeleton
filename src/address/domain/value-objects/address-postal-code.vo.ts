@@ -1,4 +1,4 @@
-import { InvalidArgumentError, StringValueObject } from "@commons";
+import {InvalidArgumentError, StringValueObject} from "../../../commons/src";
 
 export default class AddressPostalCode extends StringValueObject {
     private static readonly POSTAL_CODE_REGEX: RegExp

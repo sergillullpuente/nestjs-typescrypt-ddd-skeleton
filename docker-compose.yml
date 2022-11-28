@@ -1,7 +1,8 @@
-version: '3.7'
+version: '3.8'
 services:
   postgres:
-    build: ./docker/postgres
+    container_name: microservice_postgres
+    image: postgres:13-alpine
     restart: unless-stopped
     environment:
       - POSTGRES_USER=unibo
@@ -10,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - psql-db-data:/var/lib/postgresql/data
+      - /postgresql/data
     networks:
       - ws-network
 
