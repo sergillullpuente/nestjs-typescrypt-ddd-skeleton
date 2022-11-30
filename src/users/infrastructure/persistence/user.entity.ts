@@ -6,6 +6,8 @@ import UserAlias from "../../domain/value-objects/user-alias.vo";
 import UserName from "../../domain/value-objects/user-name.vo";
 import {BaseEntity} from "../../../commons/src"
 import {AddressEntity} from "../../../address/infrastructure/persistence/address.entity";
+import UserStatus from "../../domain/value-objects/user-status.vo";
+import {UserStatusEnum} from "../../domain/value-objects/user-status.enum";
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
@@ -48,6 +50,13 @@ export class UserEntity extends BaseEntity {
     })
     readonly address: AddressEntity;
 
+    @Column({
+        type: 'enum',
+        enum: UserStatusEnum,
+        default: UserStatusEnum.NEW,
+    })
+    readonly status: UserStatusEnum;
+
     constructor(
         id: string,
         email: string,
@@ -55,6 +64,7 @@ export class UserEntity extends BaseEntity {
         lastName: string,
         alias: string,
         address: AddressEntity,
+        status: UserStatusEnum,
     ) {
         super();
         this.id = id;
@@ -63,6 +73,7 @@ export class UserEntity extends BaseEntity {
         this.lastName = lastName;
         this.alias = alias;
         this.address = address;
+        this.status = status;
     }
 
     static fromUser(user: User): UserEntity {
@@ -73,6 +84,7 @@ export class UserEntity extends BaseEntity {
             user.lastName.value(),
             user.alias?.value() ?? null,
             AddressEntity.fromAddress(user.address),
+            user.status.value(),
         );
     }
 
@@ -84,6 +96,7 @@ export class UserEntity extends BaseEntity {
             new UserName(this.lastName),
             this.alias ? new UserAlias(this.alias) : undefined,
             this.address.toModel(),
+            new UserStatus(this.status)
         );
     }
 }

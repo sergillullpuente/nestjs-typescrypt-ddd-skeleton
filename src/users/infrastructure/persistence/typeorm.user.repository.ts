@@ -3,6 +3,7 @@ import {Connection, QueryRunner, Repository} from "typeorm";
 import {UserEntity} from "./user.entity";
 import User from "../../domain/user";
 import UserId from "../../domain/value-objects/user-id.vo";
+import {Criteria} from "src/commons/src/lib/criteria/criteria";
 
 export class TypeormUserRepository implements UserRepository {
     constructor(private readonly connection: Connection) {
@@ -28,6 +29,12 @@ export class TypeormUserRepository implements UserRepository {
 
     async save(user: User): Promise<void> {
         await this.repository.save(UserEntity.fromUser(user));
+    }
+
+    async matching(criteria: Criteria): Promise<User[]> {
+        // const users = await this.repository.find(criteria);
+        // return users.map((user) => user.toModel());
+        throw new Error("Method not implemented.");
     }
 
     async delete(id: UserId): Promise<void> {

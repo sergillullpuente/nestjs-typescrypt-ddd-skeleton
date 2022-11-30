@@ -1,18 +1,9 @@
-export type Primitives = string | number | boolean | Date | Array<Primitives>;
+export type Primitives = String | string | number | Boolean | boolean | Date;
 
 export abstract class ValueObject<T extends Primitives> {
     constructor(private readonly _value: T) {
         this.ensureValueIsDefined(_value);
         this.ensureValidValue(_value);
-    }
-
-    private ensureValueIsDefined(value: T): void {
-        if (this.isNullOrUndefined(value)) {
-            throw new Error('Value must be defined');
-        }
-    }
-
-    protected ensureValidValue(_value: T) {
     }
 
     public value(): T {
@@ -24,6 +15,19 @@ export abstract class ValueObject<T extends Primitives> {
             this.constructor.name === other.constructor.name
             && this.value() === other.value()
         );
+    }
+
+    toString(): string {
+        return this.value.toString();
+    }
+
+    protected ensureValidValue(_value: T) {
+    }
+
+    private ensureValueIsDefined(value: T): void {
+        if (this.isNullOrUndefined(value)) {
+            throw new Error('Value must be defined');
+        }
     }
 
     private isNullOrUndefined(value: any) {

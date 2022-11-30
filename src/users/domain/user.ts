@@ -4,6 +4,7 @@ import UserName from "./value-objects/user-name.vo";
 import UserAlias from "./value-objects/user-alias.vo";
 import Address from "../../address/domain/address";
 import {ToPrimitives} from "../../commons/src";
+import UserStatus from "./value-objects/user-status.vo";
 
 export default class User {
     constructor(
@@ -12,7 +13,8 @@ export default class User {
         private readonly _firstName: UserName,
         private readonly _lastName: UserName,
         private readonly _alias: UserAlias,
-        private readonly _address: Address
+        private readonly _address: Address,
+        private readonly _status: UserStatus,
     ) {
     }
 
@@ -40,14 +42,18 @@ export default class User {
         return this._address;
     }
 
+    get status(): UserStatus {
+        return this._status;
+    }
+
     static create(
         email: UserEmail,
         firstName: UserName,
         lastName: UserName,
         alias: UserAlias,
-        address: Address
+        address: Address,
     ): User {
-        return new User(UserId.create(), email, firstName, lastName, alias, address);
+        return new User(UserId.create(), email, firstName, lastName, alias, address, UserStatus.default());
     }
 
     fullName(): string {
@@ -61,7 +67,8 @@ export default class User {
             firstName: this.firstName.value(),
             lastName: this.lastName.value(),
             alias: this.alias.value(),
-            address: this.address.toPrimitives()
+            address: this.address.toPrimitives(),
+            status: this.status,
         };
     }
 }
