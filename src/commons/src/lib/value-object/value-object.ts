@@ -26,7 +26,7 @@ export abstract class ValueObject<T extends Primitives> {
 
     private ensureValueIsDefined(value: T): void {
         if (this.isNullOrUndefined(value)) {
-            throw new Error('Value must be defined');
+            throw new Error(`Value must be defined in ValueObject.ensureValueIsDefined. Received: ${value}`);
         }
     }
 

@@ -26,7 +26,7 @@ export class CreateUserService implements CreateUserServiceDefinition {
     async execute(userDto: UserDto): Promise<User> {
         const address = this.getAddress(userDto);
         const user = this.getUser(userDto, address);
-        await this.userRepository.save(user)
+        // await this.userRepository.save(user)
         return user;
     }
 

@@ -68,7 +68,7 @@ export default class User {
             lastName: this.lastName.value(),
             alias: this.alias.value(),
             address: this.address.toPrimitives(),
-            status: this.status,
+            status: this.status.value(),
         };
     }
 }

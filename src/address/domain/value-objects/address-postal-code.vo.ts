@@ -11,7 +11,7 @@ export default class AddressPostalCode extends StringValueObject {
     protected ensureValidValue(_value: string) {
         super.ensureValidValue(_value);
         if (!this.isValidPostalCode(_value)) {
-            throw new InvalidArgumentError(`<${_value}> is a invalid value to postal code`);
+            throw new InvalidArgumentError(`Invalid value to ${AddressPostalCode.name}. Received: ${_value}`);
         }
     }
 
