@@ -1,5 +1,5 @@
 import {Filters} from './filters';
-import {Order} from './Order';
+import {Order} from "./order";
 
 export class Criteria {
     readonly filters: Filters;

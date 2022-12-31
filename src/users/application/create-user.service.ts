@@ -1,6 +1,5 @@
 import {Inject, Injectable} from "@nestjs/common";
 import {QueryService} from "@commons";
-import {UserDto} from "../infrastructure/controller/create-user-controller";
 import User from "../domain/user";
 import Address from "../../address/domain/address";
 import AddressLine from "../../address/domain/value-objects/address-line.vo";
@@ -12,6 +11,7 @@ import UserName from "../domain/value-objects/user-name.vo";
 import UserEmail from "../domain/value-objects/user-email.vo";
 import {USER_REPOSITORY} from "../user.constants";
 import {UserRepository} from "../domain/user.repository";
+import {UserDto} from "../infrastructure/dto/user.dto";
 
 export type CreateUserServiceDefinition = QueryService<UserDto, User>
 
@@ -24,13 +24,13 @@ export class CreateUserService implements CreateUserServiceDefinition {
     }
 
     async execute(userDto: UserDto): Promise<User> {
-        const address = this.getAddress(userDto);
-        const user = this.getUser(userDto, address);
+        const address = this.createAddress(userDto);
+        const user = this.createUser(userDto, address);
         // await this.userRepository.save(user)
         return user;
     }
 
-    private getUser(userDto: UserDto, address: Address) {
+    private createUser(userDto: UserDto, address: Address) {
         return User.create(
             new UserEmail(userDto.email),
             new UserName(userDto.firstName),
@@ -40,7 +40,7 @@ export class CreateUserService implements CreateUserServiceDefinition {
         );
     }
 
-    private getAddress(userDto: UserDto) {
+    private createAddress(userDto: UserDto) {
         return Address.create(
             new AddressLine(userDto.address.addressLine),
             new AddressCountry(userDto.address.country),

@@ -94,7 +94,7 @@ export class UserEntity extends BaseEntity {
             new UserEmail(this.email),
             new UserName(this.firstName),
             new UserName(this.lastName),
-            this.alias ? new UserAlias(this.alias) : undefined,
+            new UserAlias(this.alias),
             this.address.toModel(),
             new UserStatus(this.status)
         );

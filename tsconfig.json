@@ -4,12 +4,18 @@
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
+    "types": [
+      "node",
+      "jest"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2017",
+    "target": "es6",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
@@ -17,9 +23,6 @@
       "@commons": [
         "libs/commons/src/index.ts"
       ]
-    },
-    "include": [
-      "aps/**/*"
-    ]
+    }
   }
 }
