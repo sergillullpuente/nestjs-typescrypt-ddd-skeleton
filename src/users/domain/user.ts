@@ -56,10 +56,6 @@ export default class User {
         return new User(UserId.create(), email, firstName, lastName, alias, address, UserStatus.default());
     }
 
-    fullName(): string {
-        return `${this._firstName} ${this._lastName}`;
-    }
-
     toPrimitives(): ToPrimitives<User> {
         return {
             id: this.id.value(),

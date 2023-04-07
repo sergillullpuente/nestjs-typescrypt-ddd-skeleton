@@ -1,11 +1,11 @@
 import {NestFactory} from "@nestjs/core";
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 import {Logger} from "@nestjs/common";
-import {UsersModule} from "./users.module";
+import {AppModule} from "./app.module";
 import {WinstonLogger} from "./commons/src/lib/logger/winston-logger.service";
 
 async function bootstrap() {
-    const app = await NestFactory.create(UsersModule);
+    const app = await NestFactory.create(AppModule);
     app.useLogger(new WinstonLogger('Custom Name'))
     const options = new DocumentBuilder()
         .setTitle("[User]")

@@ -1,23 +1,16 @@
 version: '3.8'
+
 services:
   postgres:
-    build: ./docker/postgress
-    container_name: postgresql
-    image: postgres:13-alpine
-    restart: unless-stopped
-    environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=ms-users
+    image: postgres
+    restart: always
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: database
     volumes:
-      - /postgresql/data
-    networks:
-      - ws-network
-
+      - db-data:/var/lib/postgresql/data
 volumes:
-  psql-db-data:
-
-networks:
-  ws-network:
+  db-data:

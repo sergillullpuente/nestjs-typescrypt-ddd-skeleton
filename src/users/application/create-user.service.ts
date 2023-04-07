@@ -1,5 +1,4 @@
-import {Inject, Injectable} from "@nestjs/common";
-import {QueryService} from "@commons";
+import {Injectable} from "@nestjs/common";
 import User from "../domain/user";
 import Address from "../../address/domain/address";
 import AddressLine from "../../address/domain/value-objects/address-line.vo";
@@ -9,9 +8,11 @@ import AddressPostalCode from "../../address/domain/value-objects/address-postal
 import UserAlias from "../domain/value-objects/user-alias.vo";
 import UserName from "../domain/value-objects/user-name.vo";
 import UserEmail from "../domain/value-objects/user-email.vo";
-import {USER_REPOSITORY} from "../user.constants";
-import {UserRepository} from "../domain/user.repository";
 import {UserDto} from "../infrastructure/dto/user.dto";
+import {QueryService} from "../../../libs/commons/src";
+import {UserEntity} from "../infrastructure/persistence/user.entity";
+import {Repository} from "typeorm";
+import {InjectRepository} from "@nestjs/typeorm";
 
 export type CreateUserServiceDefinition = QueryService<UserDto, User>
 
@@ -19,14 +20,14 @@ export type CreateUserServiceDefinition = QueryService<UserDto, User>
 export class CreateUserService implements CreateUserServiceDefinition {
 
     constructor(
-        @Inject(USER_REPOSITORY) private readonly userRepository: UserRepository,
+        @InjectRepository(UserEntity) private userRepository: Repository<UserEntity>,
     ) {
     }
 
     async execute(userDto: UserDto): Promise<User> {
         const address = this.createAddress(userDto);
         const user = this.createUser(userDto, address);
-        // await this.userRepository.save(user)
+        await this.userRepository.save(UserEntity.fromUser(user))
         return user;
     }
 

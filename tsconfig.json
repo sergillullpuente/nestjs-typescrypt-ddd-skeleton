@@ -1,28 +1,26 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "types": [
-      "node",
-      "jest"
-    ],
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "sourceMap": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./",
-    "incremental": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
-    "paths": {
-      "@commons": [
-        "libs/commons/src/index.ts"
-      ]
-    }
-  }
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "removeComments": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
