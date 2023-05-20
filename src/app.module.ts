@@ -2,6 +2,8 @@ import {Module} from "@nestjs/common";
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {AddressModule} from "./address/address.module";
 import {UserModule} from "./users/users.module";
+import {APP_INTERCEPTOR} from "@nestjs/core";
+import {RequestResponseLogInterceptor} from "./commons/src";
 
 @Module({
     imports: [
@@ -20,7 +22,12 @@ import {UserModule} from "./users/users.module";
         UserModule
     ],
     controllers: [],
-    providers: []
+    providers: [
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: RequestResponseLogInterceptor,
+        }
+    ]
 })
 export class AppModule {
 }
