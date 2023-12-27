@@ -1,8 +1,7 @@
 import {Controller, Get, Param} from "@nestjs/common";
 import {ApiCreatedResponse, ApiOperation, ApiTags} from "@nestjs/swagger";
-import {ToPrimitives} from "../../../commons/src";
+import {ControllerInterface, ToPrimitives} from "../../../commons/src";
 import User from "../../domain/user";
-import {ControllerInterface} from "../../../../libs/commons/src";
 import {GetUserService} from "../../application/get-user.service";
 
 @Controller('/user')

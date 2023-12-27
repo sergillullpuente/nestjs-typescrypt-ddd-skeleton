@@ -1,10 +1,9 @@
 import {Body, Controller, Post} from "@nestjs/common";
 import {CreateUserService} from "../../application/create-user.service";
 import {ApiCreatedResponse, ApiOperation, ApiTags} from "@nestjs/swagger";
-import {ToPrimitives} from "../../../commons/src";
+import {ControllerInterface, ToPrimitives} from "../../../commons/src";
 import User from "../../domain/user";
 import {UserDto} from "../dto/user.dto";
-import {ControllerInterface} from "../../../../libs/commons/src";
 
 @Controller()
 @ApiTags('[App] User')

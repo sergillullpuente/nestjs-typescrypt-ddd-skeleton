@@ -9,10 +9,10 @@ import UserAlias from "../domain/value-objects/user-alias.vo";
 import UserName from "../domain/value-objects/user-name.vo";
 import UserEmail from "../domain/value-objects/user-email.vo";
 import {UserDto} from "../infrastructure/dto/user.dto";
-import {QueryService} from "../../../libs/commons/src";
 import {UserEntity} from "../infrastructure/persistence/user.entity";
 import {Repository} from "typeorm";
 import {InjectRepository} from "@nestjs/typeorm";
+import {QueryService} from "../../commons/src";
 
 export type CreateUserServiceDefinition = QueryService<UserDto, User>
 
