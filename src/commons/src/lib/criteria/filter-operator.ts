@@ -15,7 +15,7 @@ export class FilterOperator extends EnumValueObject<Operator> {
         super(value, Object.values(Operator));
     }
 
-    static fromValue(value: string): FilterOperator {
+    static fromValue(value: Operator): FilterOperator {
         switch (value) {
             case Operator.EQUAL:
                 return new FilterOperator(Operator.EQUAL);
@@ -36,10 +36,6 @@ export class FilterOperator extends EnumValueObject<Operator> {
 
     static equal() {
         return this.fromValue(Operator.EQUAL);
-    }
-
-    public isPositive(): boolean {
-        return this.value.toString() !== Operator.NOT_EQUAL && this.value.toString() !== Operator.NOT_CONTAINS;
     }
 
     protected throwErrorForInvalidValue(value: Operator): void {
