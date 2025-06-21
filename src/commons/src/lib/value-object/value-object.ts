@@ -1,3 +1,5 @@
+import { BadRequestException } from '@nestjs/common';
+
 export type Primitives = string | number | boolean | Date;
 
 export abstract class ValueObject<T extends Primitives> {
@@ -26,7 +28,8 @@ export abstract class ValueObject<T extends Primitives> {
 
     private ensureValueIsDefined(value: T): void {
         if (this.isNullOrUndefined(value)) {
-            throw new Error(`Value must be defined in ValueObject.ensureValueIsDefined. Received: ${value}`);
+            const className = this.constructor.name;
+            throw new BadRequestException(`${className} cannot be null or undefined`);
         }
     }
 
