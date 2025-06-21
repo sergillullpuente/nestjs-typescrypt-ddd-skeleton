@@ -11,7 +11,7 @@ async function bootstrap() {
     //         whitelist: true,
     //     })
     // )
-    app.useLogger(new WinstonLogger('Custom Name'))
+    app.useLogger(new WinstonLogger())
     const options = new DocumentBuilder()
         .setTitle('[User]')
         .setDescription('MicroService Users')
