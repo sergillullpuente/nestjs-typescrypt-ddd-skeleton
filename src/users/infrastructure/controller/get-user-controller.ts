@@ -4,7 +4,7 @@ import { ControllerInterface, ToPrimitives } from '../../../commons/src';
 import User from '../../domain/user';
 import { GetUserService } from '../../application/get-user.service';
 
-@Controller('/user')
+@Controller('/users')
 @ApiTags('[App] User')
 export class GetUserController implements ControllerInterface<ToPrimitives<User>> {
     constructor(private readonly getUserService: GetUserService) {

@@ -11,7 +11,7 @@ export class CreateUserController implements ControllerInterface<ToPrimitives<Us
     constructor(private readonly createUserService: CreateUserService) {
     }
 
-    @Post('/user')
+    @Post('/users')
     @ApiOperation({ summary: 'Create new user' })
     @ApiCreatedResponse()
     async run(@Body() userDto: UserDto): Promise<ToPrimitives<User>> {
