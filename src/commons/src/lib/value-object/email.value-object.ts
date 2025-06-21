@@ -2,6 +2,8 @@ import { StringValueObject } from './string.value-object';
 import { InvalidArgumentError } from './invalid-argument.error';
 
 export class EmailValueObject extends StringValueObject {
+    public static readonly MAX_LENGTH = 100;
+
     protected ensureValidValue(email: string) {
         if (!this.isValidEmail()) {
             throw new InvalidArgumentError(`Invalid email <${email}>`);

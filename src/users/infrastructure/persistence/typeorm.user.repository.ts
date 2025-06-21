@@ -1,12 +1,12 @@
 import { UserRepository } from '../../domain/user.repository';
-import { Connection, QueryRunner, Repository } from 'typeorm';
+import { DataSource, QueryRunner, Repository } from 'typeorm';
 import { UserEntity } from './user.entity';
 import User from '../../domain/user';
 import UserId from '../../domain/value-objects/user-id.vo';
 import { Criteria } from 'src/commons/src/lib/criteria/criteria';
 
 export class TypeormUserRepository implements UserRepository {
-    constructor(private readonly connection: Connection) {
+    constructor(private readonly connection: DataSource) {
     }
 
     private _queryRunner?: QueryRunner;

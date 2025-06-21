@@ -4,7 +4,7 @@ import UserId from '../../domain/value-objects/user-id.vo';
 import UserEmail from '../../domain/value-objects/user-email.vo';
 import UserAlias from '../../domain/value-objects/user-alias.vo';
 import UserName from '../../domain/value-objects/user-name.vo';
-import { BaseEntity } from '../../../commons/src'
+import { BaseEntity, EmailValueObject } from '../../../commons/src'
 import { AddressEntity } from '../../../address/infrastructure/persistence/address.entity';
 import UserStatus from '../../domain/value-objects/user-status.vo';
 import { UserStatusEnum } from '../../domain/value-objects/user-status.enum';
@@ -15,7 +15,7 @@ export class UserEntity extends BaseEntity {
     readonly id: string;
 
     @Column({
-        length: 100,
+        length: EmailValueObject.MAX_LENGTH,
         unique: true,
     })
     readonly email: string;
