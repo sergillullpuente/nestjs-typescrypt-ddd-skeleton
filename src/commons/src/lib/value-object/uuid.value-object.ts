@@ -1,6 +1,6 @@
 import { ValueObject } from './value-object';
-import { InvalidArgumentError } from "./invalid-argument.error";
-import { v4, validate } from "uuid";
+import { InvalidArgumentError } from './invalid-argument.error';
+import { v4, validate } from 'uuid';
 
 export class Uuid extends ValueObject<string> {
     static create(): Uuid {

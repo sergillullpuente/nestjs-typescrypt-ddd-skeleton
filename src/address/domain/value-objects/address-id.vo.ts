@@ -1,4 +1,4 @@
-import {Uuid} from "../../../commons/src";
+import { Uuid } from '../../../commons/src';
 
 export default class AddressId extends Uuid {
 }

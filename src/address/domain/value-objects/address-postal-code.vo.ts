@@ -1,8 +1,8 @@
-import {InvalidArgumentError, StringValueObject} from "../../../commons/src";
+import { InvalidArgumentError, StringValueObject } from '../../../commons/src';
 
 export default class AddressPostalCode extends StringValueObject {
     private static readonly POSTAL_CODE_REGEX: RegExp
-                                = /^(?<province>[1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
+        = /^(?<province>[1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/;
 
     constructor(value: string) {
         super(value.trim());

@@ -1,9 +1,8 @@
-import {CallHandler, ExecutionContext, Injectable, NestInterceptor} from '@nestjs/common';
-import {catchError, map, Observable, throwError} from 'rxjs';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class RequestResponseLogInterceptor implements NestInterceptor {
-
     intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
         const now = Date.now();
         const request = context.switchToHttp().getRequest();
@@ -17,7 +16,7 @@ export class RequestResponseLogInterceptor implements NestInterceptor {
                     const response = context.switchToHttp().getResponse();
                     const delay = Date.now() - now;
                     console.warn(`RESPONSE [${response.statusCode}] [${method}] ${url} - ${delay}ms`)
-                    return {data: data}
+                    return { data }
                 }),
                 catchError((error) => {
                     const response = context.switchToHttp().getResponse();

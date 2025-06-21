@@ -1,9 +1,7 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable @typescript-eslint/ban-types */
-
-import {EnumValueObject} from "../value-object/enum.value-object";
+import { EnumValueObject } from '../value-object/enum.value-object';
 
 type Methods<T> = {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     [P in keyof T]: T[P] extends Function ? P : never;
 }[keyof T];
 
@@ -18,9 +16,9 @@ type ValueObjectValue<T> = {
             ? U
             : T[key] extends Array<{ _value: unknown }>
                 ? Pick<T[key][number], '_value'>['_value'][]
-                : T[key] extends Array<Object>
+                : T[key] extends Array<object>
                     ? ToPrimitives<T[key][number]>[]
-                    : T[key] extends Object
+                    : T[key] extends object
                         ? ToPrimitives<T[key]>
                         : T[key];
 };

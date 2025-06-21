@@ -1,8 +1,8 @@
-import {NestFactory} from "@nestjs/core";
-import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
-import {Logger} from "@nestjs/common";
-import {AppModule} from "./app.module";
-import {WinstonLogger} from "./commons/src/lib/logger/winston-logger.service";
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { Logger } from '@nestjs/common';
+import { AppModule } from './app.module';
+import { WinstonLogger } from './commons/src/lib/logger/winston-logger.service';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -13,14 +13,14 @@ async function bootstrap() {
     // )
     app.useLogger(new WinstonLogger('Custom Name'))
     const options = new DocumentBuilder()
-        .setTitle("[User]")
-        .setDescription("MicroService Users")
+        .setTitle('[User]')
+        .setDescription('MicroService Users')
         .build();
     const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup("docs", app, document);
+    SwaggerModule.setup('docs', app, document);
     await app.listen(3000);
     Logger.log(
-        "🚀 Application is running on: http://localhost:3000"
+        '🚀 Application is running on: http://localhost:3000',
     );
 }
 

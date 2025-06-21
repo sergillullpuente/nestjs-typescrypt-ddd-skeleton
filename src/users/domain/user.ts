@@ -1,10 +1,10 @@
-import UserEmail from "./value-objects/user-email.vo";
-import UserId from "./value-objects/user-id.vo";
-import UserName from "./value-objects/user-name.vo";
-import UserAlias from "./value-objects/user-alias.vo";
-import Address from "../../address/domain/address";
-import {ToPrimitives} from "../../commons/src";
-import UserStatus from "./value-objects/user-status.vo";
+import UserEmail from './value-objects/user-email.vo';
+import UserId from './value-objects/user-id.vo';
+import UserName from './value-objects/user-name.vo';
+import UserAlias from './value-objects/user-alias.vo';
+import Address from '../../address/domain/address';
+import { ToPrimitives } from '../../commons/src';
+import UserStatus from './value-objects/user-status.vo';
 
 export default class User {
     constructor(

@@ -1,5 +1,5 @@
 import { StringValueObject } from './string.value-object';
-import { InvalidArgumentError } from "./invalid-argument.error";
+import { InvalidArgumentError } from './invalid-argument.error';
 
 export class UrlValueObject extends StringValueObject {
     protected ensureValidValue(url: string) {
@@ -12,7 +12,7 @@ export class UrlValueObject extends StringValueObject {
         return String(this.value())
             .toLowerCase()
             .match(
-                // eslint-disable-next-line max-len,prefer-named-capture-group
+                // eslint-disable-next-line prefer-named-capture-group
                 /^(http(s)?:\/\/)?([-a-zA-Z0-9_]{2,256}\.)?[-a-zA-Z0-9_]{2,256}\.[a-z]{2,256}\b([-a-zA-Z0-9@:%_+.~#?&=/]*)$/,
             );
     }

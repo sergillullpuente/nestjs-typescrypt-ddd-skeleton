@@ -1,7 +1,7 @@
-import {FilterField} from './filter-field';
-import {FilterOperator} from './filter-operator';
-import {FilterValue} from './filter-value';
-import {InvalidArgumentError} from "../value-object";
+import { FilterField } from './filter-field';
+import { FilterOperator } from './filter-operator';
+import { FilterValue } from './filter-value';
+import { InvalidArgumentError } from '../value-object';
 
 export class Filter {
     readonly field: FilterField;
@@ -20,7 +20,7 @@ export class Filter {
         const value = values.get('value');
 
         if (!field || !operator || !value) {
-            throw new InvalidArgumentError(`The filter is invalid`);
+            throw new InvalidArgumentError('The filter is invalid');
         }
 
         return new Filter(new FilterField(field), FilterOperator.fromValue(operator), new FilterValue(value));

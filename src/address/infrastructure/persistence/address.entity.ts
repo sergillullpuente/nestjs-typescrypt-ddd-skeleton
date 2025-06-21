@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import Address from '../../domain/address';
 import AddressId from '../../domain/value-objects/address-id.vo';
 import AddressLine from '../../domain/value-objects/address-line.vo';
@@ -63,7 +63,7 @@ export class AddressEntity {
             new AddressLine(this.addressLine),
             new AddressCountry(this.country),
             new AddressCity(this.city),
-            new AddressPostalCode(this.postalCode)
+            new AddressPostalCode(this.postalCode),
         );
     }
 }

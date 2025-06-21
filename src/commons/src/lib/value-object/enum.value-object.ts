@@ -1,5 +1,5 @@
-import {InvalidArgumentError} from "./invalid-argument.error";
-import {Primitives} from "./value-object";
+import { InvalidArgumentError } from './invalid-argument.error';
+import { Primitives } from './value-object';
 
 export abstract class EnumValueObject<T extends Primitives> {
     public static readonly MAX_LENGTH = 50;

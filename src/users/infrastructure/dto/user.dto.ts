@@ -1,5 +1,5 @@
-import {ApiProperty} from "@nestjs/swagger";
-import AddressDto from "./address.dto";
+import { ApiProperty } from '@nestjs/swagger';
+import AddressDto from './address.dto';
 
 export class UserDto {
     @ApiProperty()

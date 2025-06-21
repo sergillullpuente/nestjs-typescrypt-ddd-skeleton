@@ -1,4 +1,4 @@
-import {BeforeInsert, BeforeUpdate, Column} from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column } from 'typeorm';
 
 export abstract class BaseEntity {
     @Column({

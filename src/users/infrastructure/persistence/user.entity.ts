@@ -1,36 +1,41 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
-import User from "../../domain/user";
-import UserId from "../../domain/value-objects/user-id.vo";
-import UserEmail from "../../domain/value-objects/user-email.vo";
-import UserAlias from "../../domain/value-objects/user-alias.vo";
-import UserName from "../../domain/value-objects/user-name.vo";
-import {BaseEntity} from "../../../commons/src"
-import {AddressEntity} from "../../../address/infrastructure/persistence/address.entity";
-import UserStatus from "../../domain/value-objects/user-status.vo";
-import {UserStatusEnum} from "../../domain/value-objects/user-status.enum";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import User from '../../domain/user';
+import UserId from '../../domain/value-objects/user-id.vo';
+import UserEmail from '../../domain/value-objects/user-email.vo';
+import UserAlias from '../../domain/value-objects/user-alias.vo';
+import UserName from '../../domain/value-objects/user-name.vo';
+import { BaseEntity } from '../../../commons/src'
+import { AddressEntity } from '../../../address/infrastructure/persistence/address.entity';
+import UserStatus from '../../domain/value-objects/user-status.vo';
+import { UserStatusEnum } from '../../domain/value-objects/user-status.enum';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     readonly id: string;
+
     @Column({
         length: 100,
         unique: true,
     })
     readonly email: string;
+
     @Column({
         name: 'first_name',
     })
     readonly firstName: string;
+
     @Column({
         name: 'last_name',
     })
     readonly lastName: string;
+
     @Column({
         name: 'alias',
         nullable: true,
     })
     readonly alias: string;
+
     @ManyToOne(
         () => AddressEntity,
         (address) => address.id,
@@ -96,7 +101,7 @@ export class UserEntity extends BaseEntity {
             new UserName(this.lastName),
             new UserAlias(this.alias),
             this.address.toModel(),
-            new UserStatus(this.status)
+            new UserStatus(this.status),
         );
     }
 }

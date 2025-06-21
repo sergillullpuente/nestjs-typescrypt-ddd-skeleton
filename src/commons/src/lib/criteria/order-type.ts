@@ -1,8 +1,8 @@
-import {EnumValueObject} from "../value-object/enum.value-object";
-import {InvalidArgumentError} from "../value-object";
+import { EnumValueObject } from '../value-object/enum.value-object';
+import { InvalidArgumentError } from '../value-object';
 
 export enum OrderTypes {
-    ASC  = 'asc',
+    ASC = 'asc',
     DESC = 'desc',
     NONE = 'none'
 }
@@ -10,25 +10,6 @@ export enum OrderTypes {
 export class OrderType extends EnumValueObject<OrderTypes> {
     constructor(value: OrderTypes) {
         super(value, Object.values(OrderTypes));
-    }
-
-    static fromValue(value: string): OrderType {
-        switch (value) {
-            case OrderTypes.ASC:
-                return new OrderType(OrderTypes.ASC);
-            case OrderTypes.DESC:
-                return new OrderType(OrderTypes.DESC);
-            default:
-                throw new InvalidArgumentError(`The order type ${value} is invalid`);
-        }
-    }
-
-    public isNone(): boolean {
-        return this.value.toString() === OrderTypes.NONE;
-    }
-
-    public isAsc(): boolean {
-        return this.value.toString() === OrderTypes.ASC;
     }
 
     protected throwErrorForInvalidValue(value: OrderTypes): void {

@@ -1,12 +1,12 @@
-import {Module, Provider} from "@nestjs/common";
-import {CreateUserController} from "./infrastructure/controller/create-user-controller";
-import {CreateUserService} from "./application/create-user.service";
-import {USER_REPOSITORY} from "./user.constants";
-import {TypeormUserRepository} from "./infrastructure/persistence/typeorm.user.repository";
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {UserEntity} from "./infrastructure/persistence/user.entity";
-import {GetUserController} from "./infrastructure/controller/get-user-controller";
-import {GetUserService} from "./application/get-user.service";
+import { Module, Provider } from '@nestjs/common';
+import { CreateUserController } from './infrastructure/controller/create-user-controller';
+import { CreateUserService } from './application/create-user.service';
+import { USER_REPOSITORY } from './user.constants';
+import { TypeormUserRepository } from './infrastructure/persistence/typeorm.user.repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './infrastructure/persistence/user.entity';
+import { GetUserController } from './infrastructure/controller/get-user-controller';
+import { GetUserService } from './application/get-user.service';
 
 export const userRepository: Provider = {
     provide: USER_REPOSITORY,
@@ -18,7 +18,7 @@ export const userRepository: Provider = {
         TypeOrmModule.forFeature([UserEntity]),
     ],
     controllers: [CreateUserController, GetUserController],
-    providers: [CreateUserService, GetUserService, userRepository]
+    providers: [CreateUserService, GetUserService, userRepository],
 })
 export class UserModule {
 }

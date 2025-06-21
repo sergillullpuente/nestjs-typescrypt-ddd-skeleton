@@ -1,12 +1,12 @@
-import {EnumValueObject} from "../value-object/enum.value-object";
-import {InvalidArgumentError} from "../value-object";
+import { EnumValueObject } from '../value-object/enum.value-object';
+import { InvalidArgumentError } from '../value-object';
 
 export enum Operator {
-    EQUAL        = '=',
-    NOT_EQUAL    = '!=',
-    GT           = '>',
-    LT           = '<',
-    CONTAINS     = 'CONTAINS',
+    EQUAL = '=',
+    NOT_EQUAL = '!=',
+    GT = '>',
+    LT = '<',
+    CONTAINS = 'CONTAINS',
     NOT_CONTAINS = 'NOT_CONTAINS'
 }
 
