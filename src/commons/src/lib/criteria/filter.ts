@@ -1,5 +1,5 @@
 import { FilterField } from './filter-field';
-import { FilterOperator } from './filter-operator';
+import { FilterOperator, Operator } from './filter-operator';
 import { FilterValue } from './filter-value';
 import { InvalidArgumentError } from '../value-object';
 
@@ -23,6 +23,6 @@ export class Filter {
             throw new InvalidArgumentError('The filter is invalid');
         }
 
-        return new Filter(new FilterField(field), FilterOperator.fromValue(operator), new FilterValue(value));
+        return new Filter(new FilterField(field), FilterOperator.fromValue(operator as Operator), new FilterValue(value));
     }
 }
